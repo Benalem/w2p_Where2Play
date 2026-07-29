@@ -38,9 +38,10 @@
     <link rel="stylesheet" href="styles/variables.css" />
     <link rel="stylesheet" href="styles/common.mobile.css" />
     <link rel="stylesheet" href="styles/mobile.css" />
+    <link rel="stylesheet" href="styles/where2play.css" />
 
     <script type="module" src="src/main.mobile.ts"></script>
-    <title>GeoGirafe</title>
+    <title>Where2Play</title>
   </head>
 
   <body>
@@ -94,6 +95,11 @@
       <div id="content">
         <girafe-map></girafe-map>
         <girafe-infobox></girafe-infobox>
+        <!-- Popup Where2Play mobile -->
+        <div id="w2p-popup">
+          <button id="w2p-popup-close" title="Fermer">✕</button>
+          <div id="w2p-popup-content"></div>
+        </div>
       </div>
       <girafe-swipe-up-panel>
         <girafe-theme-select slot="main"></girafe-theme-select>
