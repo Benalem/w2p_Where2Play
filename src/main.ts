@@ -58,7 +58,11 @@ girafeApp.isReady().then(() => {
 
   const sportsSource = new VectorSource({
     url: 'data/sports.geojson',
-    format: new GeoJSONFormat(),
+    // GeoJSON en WGS84 (EPSG:4326), reprojection automatique vers LV95 (EPSG:2056)
+    format: new GeoJSONFormat({
+      dataProjection: 'EPSG:4326',
+      featureProjection: 'EPSG:2056',
+    }),
   });
 
   const sportsLayer = new VectorLayer({
