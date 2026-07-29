@@ -1,33 +1,5 @@
 {
-  "themes": [
-    {
-      "id": 1,
-      "name": "Where2Play",
-      "icon": "images/world.webp",
-      "children": [
-        {
-          "id": 10,
-          "name": "Terrains sportifs",
-          "children": [
-            {
-              "id": 101,
-              "name": "Terrains (swisstopo WMS)",
-              "type": "WMS",
-              "url": "https://wms.geo.admin.ch/",
-              "layers": "ch.astra.wanderland",
-              "imageType": "image/png",
-              "metadata": {
-                "disclaimer": "source: swisstopo (geo.admin.ch)"
-              }
-            }
-          ],
-          "metadata": {
-            "isExpanded": true
-          }
-        }
-      ]
-    }
-  ],
+  "themes": [],
   "background_layers": [
     {
       "id": 9000,

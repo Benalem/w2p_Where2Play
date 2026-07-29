@@ -11,8 +11,7 @@
     "defaultLanguage": "fr"
   },
   "themes": {
-    "url": "mock/themes.json",
-    "defaultTheme": "Where2Play"
+    "url": "mock/themes.json"
   },
   "basemaps": {
     "defaultBasemap": "Orthophoto swisstopo",
