@@ -1,0 +1,60 @@
+{
+  "general": {
+    "locale": "fr-CH"
+  },
+  "languages": {
+    "translations": {
+      "fr": ["i18n/fr.json"],
+      "de": ["i18n/de.json"],
+      "en": ["i18n/en.json"]
+    },
+    "defaultLanguage": "fr"
+  },
+  "themes": {
+    "url": "mock/themes.json",
+    "defaultTheme": "Where2Play"
+  },
+  "basemaps": {
+    "defaultBasemap": "Orthophoto swisstopo",
+    "OSM": false
+  },
+  "projections": {
+    "EPSG:3857": "WebMercator",
+    "EPSG:4326": "WGS84",
+    "EPSG:2056": "LV95"
+  },
+  "map": {
+    "srid": "EPSG:3857",
+    "scales": [2000000, 1000000, 500000, 200000, 100000, 50000, 25000, 10000, 5000, 2000, 1000, 500],
+    "startPosition": "913000,5900000",
+    "startZoom": 1
+  },
+  "map3d": {
+    "tilesetsUrls": []
+  },
+  "contextmenu": {
+    "crs": [
+      { "code": "EPSG:4326", "translation": "WGS84", "format": "decimal", "precision": 7 },
+      { "code": "EPSG:3857", "translation": "EPSG:3857", "format": "decimal", "precision": 2 }
+    ],
+    "links": [
+      {
+        "translation": "Google Street View",
+        "crs": "EPSG:4326",
+        "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=###MAPY###,###MAPX###"
+      },
+      {
+        "translation": "map.geo.admin.ch",
+        "crs": "EPSG:4326",
+        "url": "https://map.geo.admin.ch/?E=###MAPX###&N=###MAPY###&zoom=8&lang=fr"
+      }
+    ]
+  },
+  "crs": [],
+  "onboarding": {
+    "steps": []
+  },
+  "news": {
+    "autoDisplay": false
+  }
+}
