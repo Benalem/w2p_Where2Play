@@ -5,7 +5,6 @@ import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import GeoJSONFormat from 'ol/format/GeoJSON';
 import { Style, Icon } from 'ol/style';
-import Overlay from 'ol/Overlay';
 import type { FeatureLike } from 'ol/Feature';
 
 import MyFirstComponent from './components/my-first-component/component';
@@ -22,7 +21,6 @@ initializeGeoGirafeCustomStyles();
 
 const girafeApp = new GeoGirafeApp();
 
-// Icône par type de sport (correspond aux fichiers assets/*-s.png)
 const SPORT_ICONS: Record<number, string> = {
   1: 'assets/foot-s.png',
   2: 'assets/tennis-s.png',
@@ -32,7 +30,6 @@ const SPORT_ICONS: Record<number, string> = {
   6: 'assets/multisport-s.png',
 };
 
-// Cache des styles pour ne pas recréer un objet Style à chaque rendu
 const styleCache: Record<string, Style> = {};
 
 function sportStyle(feature: FeatureLike): Style {
@@ -51,14 +48,17 @@ girafeApp.isReady().then(() => {
   customElements.define('my-extended-component', MyExtendedComponent);
 
   splash.end();
-  girafeApp.context.onBoardingManager.start();
 
-  // --- Couche sports GeoJSON ---
+  try {
+    girafeApp.context.onBoardingManager.start();
+  } catch (_) {
+    // pas d'étapes d'onboarding configurées
+  }
+
   const map = girafeApp.context.mapManager.getMap();
 
   const sportsSource = new VectorSource({
     url: 'data/sports.geojson',
-    // GeoJSON natif en LV95 (EPSG:2056) — même projection que la carte, aucune reprojection
     format: new GeoJSONFormat({
       dataProjection: 'EPSG:2056',
       featureProjection: 'EPSG:2056',
@@ -73,19 +73,15 @@ girafeApp.isReady().then(() => {
 
   map.addLayer(sportsLayer);
 
-  // --- Popup au clic ---
+  // --- Popup au clic (position: fixed, pas d'OL Overlay) ---
   const popupEl = document.getElementById('w2p-popup') as HTMLElement | null;
   const popupContent = document.getElementById('w2p-popup-content') as HTMLElement | null;
   const popupClose = document.getElementById('w2p-popup-close') as HTMLElement | null;
 
   if (popupEl && popupContent) {
-    const overlay = new Overlay({ element: popupEl, autoPan: { animation: { duration: 200 } } });
-    map.addOverlay(overlay);
+    const hidePopup = () => { popupEl.style.display = 'none'; };
 
-    popupClose?.addEventListener('click', () => {
-      overlay.setPosition(undefined);
-      popupEl.classList.remove('visible');
-    });
+    popupClose?.addEventListener('click', hidePopup);
 
     map.on('singleclick', (evt) => {
       const feature = map.forEachFeatureAtPixel(
@@ -111,15 +107,18 @@ girafeApp.isReady().then(() => {
           </table>
           ${p['g_url'] ? `<a class="w2p-gmaps" href="${p['g_url']}" target="_blank" rel="noopener">📍 Google Maps</a>` : ''}
         `;
-        overlay.setPosition(evt.coordinate);
-        popupEl.classList.add('visible');
+
+        // Convertir coordonnée carte → position écran (viewport)
+        const mapEl = map.getTargetElement() as HTMLElement;
+        const rect = mapEl.getBoundingClientRect();
+        popupEl.style.left = `${rect.left + evt.pixel[0]}px`;
+        popupEl.style.top = `${rect.top + evt.pixel[1]}px`;
+        popupEl.style.display = 'block';
       } else {
-        overlay.setPosition(undefined);
-        popupEl.classList.remove('visible');
+        hidePopup();
       }
     });
 
-    // Curseur pointer sur les features sport
     map.on('pointermove', (evt) => {
       const hit = map.hasFeatureAtPixel(evt.pixel, { layerFilter: (l) => l === sportsLayer });
       (map.getTargetElement() as HTMLElement).style.cursor = hit ? 'pointer' : '';

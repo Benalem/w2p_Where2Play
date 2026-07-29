@@ -1,18 +1,18 @@
 /* ===== Popup Where2Play ===== */
 #w2p-popup {
   display: none;
-  position: absolute;
+  position: fixed;
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   padding: 14px 16px 12px;
   min-width: 220px;
   max-width: 280px;
   font-family: sans-serif;
   font-size: 13px;
-  z-index: 500;
-  /* Petite flèche vers le bas */
-  transform: translate(-50%, calc(-100% - 12px));
+  z-index: 9999;
+  /* Centrer horizontalement et placer au-dessus du point cliqué */
+  transform: translate(-50%, calc(-100% - 14px));
 }
 
 #w2p-popup::after {
@@ -24,11 +24,7 @@
   border: 10px solid transparent;
   border-top-color: #fff;
   border-bottom: none;
-  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
-}
-
-#w2p-popup.visible {
-  display: block;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.15));
 }
 
 #w2p-popup-close {
@@ -97,4 +93,49 @@
 
 .w2p-gmaps:hover {
   text-decoration: underline;
+}
+
+/* ===== Légende sportive (panneau gauche) ===== */
+.w2p-legend-panel {
+  padding: 16px 14px;
+  font-family: sans-serif;
+}
+
+.w2p-legend-logo {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.w2p-legend-subtitle {
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 18px;
+}
+
+.w2p-legend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.w2p-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #333;
+}
+
+.w2p-legend-item img {
+  flex-shrink: 0;
+  display: block;
+}
+
+.w2p-legend-footer {
+  margin-top: 18px;
+  font-size: 11px;
+  color: #bbb;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 10px;
+  line-height: 1.5;
 }
