@@ -1,0 +1,63 @@
+{
+  "general": {
+    "locale": "fr-CH"
+  },
+  "languages": {
+    "translations": {
+      "fr": ["i18n/fr.json"],
+      "de": ["i18n/de.json"],
+      "en": ["i18n/en.json"]
+    },
+    "defaultLanguage": "fr"
+  },
+  "themes": {
+    "url": "mock/themes.json"
+  },
+  "basemaps": {
+    "defaultBasemap": "Orthophoto swisstopo",
+    "OSM": false
+  },
+  "projections": {
+    "EPSG:2056": "LV95",
+    "EPSG:4326": "WGS84"
+  },
+  "crs": [
+    {
+      "code": "EPSG:2056",
+      "definition": "+proj=somerc +lat_0=46.9524055555556 +lon_0=7.43958333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs +type=crs"
+    }
+  ],
+  "map": {
+    "srid": "EPSG:2056",
+    "scales": [1000000, 500000, 200000, 100000, 50000, 25000, 10000, 5000, 2000, 1000, 500, 250],
+    "startPosition": "2545000,1155000",
+    "startZoom": 2
+  },
+  "map3d": {
+    "tilesetsUrls": []
+  },
+  "contextmenu": {
+    "crs": [
+      { "code": "EPSG:2056", "translation": "LV95", "format": "decimal", "precision": 0 },
+      { "code": "EPSG:4326", "translation": "WGS84", "format": "decimal", "precision": 6 }
+    ],
+    "links": [
+      {
+        "translation": "Google Street View",
+        "crs": "EPSG:4326",
+        "url": "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=###MAPY###,###MAPX###"
+      },
+      {
+        "translation": "map.geo.admin.ch",
+        "crs": "EPSG:4326",
+        "url": "https://map.geo.admin.ch/?E=###MAPX###&N=###MAPY###&zoom=8&lang=fr"
+      }
+    ]
+  },
+  "onboarding": {
+    "steps": []
+  },
+  "news": {
+    "autoDisplay": false
+  }
+}

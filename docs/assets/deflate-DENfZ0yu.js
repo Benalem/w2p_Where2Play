@@ -1,0 +1,2 @@
+import{t as e}from"./basedecoder-DY_QtQLv.js";import{t}from"./pako.esm-Dey3jMpx.js";var n=class extends e{decodeBlock(e){return t(new Uint8Array(e)).buffer}};export{n as default};
+//# sourceMappingURL=deflate-DENfZ0yu.js.map

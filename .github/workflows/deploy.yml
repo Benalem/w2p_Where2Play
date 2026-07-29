@@ -1,8 +1,8 @@
 name: Deploy to GitHub Pages
 
+# Désactivé — déploiement manuel via docs/ sur main
+# Réactiver en remplaçant workflow_dispatch par: push: branches: [main]
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -19,22 +19,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
-
       - name: Install dependencies
         run: npm ci
-
       - name: Build
         run: npx vite build
-
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist/app
+          path: ./docs
 
   deploy:
     environment:

@@ -1,0 +1,2 @@
+import{a as e,d as t,l as n,m as r}from"./component-CJXWo0aW.js";import{i,n as a,o,r as s}from"./main-DpZqbASS.js";import"./main-iRc_H0H_.js";var c=class extends a{initializeInterface(){}defineCoreComponents(){customElements.define(`girafe-basemap`,n),customElements.define(`girafe-coordinate`,i),customElements.define(`girafe-map`,r),customElements.define(`girafe-menu-button`,e),customElements.define(`girafe-scale`,s),customElements.define(`girafe-search`,t)}},l=new o;l.begin(),new c().isReady().then(()=>{l.end()});
+//# sourceMappingURL=custom.CBrxP5M4.js.map

@@ -61,7 +61,7 @@ export default defineConfig(({ command, mode }) => {
           : false
     },
     build: {
-      outDir: 'dist/app',
+      outDir: 'docs',
       sourcemap: true,
       emptyOutDir: true,
       chunkSizeWarningLimit: 2500,
